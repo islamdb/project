@@ -20,6 +20,9 @@ class ProjectSeeder extends Seeder
                 'name' => 'CC & SM',
                 'price' => 4000000,
                 'max_weight' => 100,
+                'started_at' => now(),
+                'finished_at' => now()
+                    ->addDays(45),
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

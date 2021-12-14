@@ -37,7 +37,7 @@ class Project extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'name', 'price', 'max-weight', 'description', 'created_at', 'updated_at'];
+    protected $fillable = ['user_id', 'name', 'price', 'max_weight', 'description', 'started_at', 'finished_at', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

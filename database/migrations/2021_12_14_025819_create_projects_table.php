@@ -29,6 +29,10 @@ class CreateProjectsTable extends Migration
                 ->unsigned();
             $table->longText('description')
                 ->nullable();
+            $table->timestamp('started_at')
+                ->nullable();
+            $table->timestamp('finished_at')
+                ->nullable();
             $table->timestamps();
         });
     }

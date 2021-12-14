@@ -1124,12 +1124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/islamdb/orchid-helper.git",
-                "reference": "5ba7056f204cd5bf450494f6c44d3703c7edd4ab"
+                "reference": "e1909290796e2a4b6650166ec9af493ed7e0b6e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/islamdb/orchid-helper/zipball/5ba7056f204cd5bf450494f6c44d3703c7edd4ab",
-                "reference": "5ba7056f204cd5bf450494f6c44d3703c7edd4ab",
+                "url": "https://api.github.com/repos/islamdb/orchid-helper/zipball/e1909290796e2a4b6650166ec9af493ed7e0b6e6",
+                "reference": "e1909290796e2a4b6650166ec9af493ed7e0b6e6",
                 "shasum": ""
             },
             "require": {
@@ -1163,7 +1163,7 @@
                 "issues": "https://github.com/islamdb/orchid-helper/issues",
                 "source": "https://github.com/islamdb/orchid-helper/tree/master"
             },
-            "time": "2021-12-14T10:05:26+00:00"
+            "time": "2021-12-14T12:36:38+00:00"
         },
         {
             "name": "islamdb/orchid-setting",
@@ -9581,5 +9581,5 @@
         "ext-intl": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

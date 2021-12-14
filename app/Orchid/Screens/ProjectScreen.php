@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 use IslamDB\OrchidHelper\Column;
 use IslamDB\OrchidHelper\Screens\ResourceScreen;
 use IslamDB\OrchidHelper\View;
+use Orchid\Screen\Fields\DateTimer;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\TD;
 
 class ProjectScreen extends ResourceScreen
@@ -28,7 +31,8 @@ class ProjectScreen extends ResourceScreen
         return Project::query()
             ->defaultSort('created_at')
             ->select([
-                'id', 'name', 'price', 'max_weight',
+                'id', 'name', 'price', 'started_at', 'finished_at',
+                'max_weight', 'description',
                 'task' => Task::query()
                     ->selectRaw('count(*)')
                     ->whereColumn('projects.id', 'tasks.project_id'),
@@ -48,7 +52,12 @@ class ProjectScreen extends ResourceScreen
     public function modelView()
     {
         return $this->model()
-            ->addSelect(['created_at', 'updated_at']);
+            ->addSelect([
+                'price',
+                'max_weight',
+                'created_at',
+                'updated_at'
+            ]);
     }
 
     public function columns()
@@ -57,16 +66,18 @@ class ProjectScreen extends ResourceScreen
             Column::make('name'),
             TD::make('task'),
             TD::make('todo', 'To Do'),
-            TD::make('member', 'Member')
+            TD::make('member', 'Member'),
+            Column::dateTime('started_at', null, 'id', false),
+            Column::dateTime('finished_at', null, 'id', false)
         ];
     }
 
     public function views()
     {
         return [
-            View::relation('user', 'Created By'),
             View::make('name'),
-            View::money('price'),
+            View::money('price', null, 2, true, ',', '.'),
+            View::make('max_weight'),
             View::make('description'),
             View::make('max_weight'),
             View::make('task'),
@@ -74,6 +85,31 @@ class ProjectScreen extends ResourceScreen
             View::make('member'),
             View::dateTime('created_at'),
             View::make('updated_at')
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            Input::make('data.name')
+                ->title('Name')
+                ->maxlength(255)
+                ->required(),
+            Input::make('data.price')
+                ->title('Price')
+                ->type('number')
+                ->required(),
+            Input::make('data.max_weight')
+                ->title('Max Weight')
+                ->type('number')
+                ->required(),
+            TextArea::make('data.description')
+                ->title('Description')
+                ->rows(4),
+            DateTimer::make('data.started_at')
+                ->title('Started At'),
+            DateTimer::make('data.finished_at')
+                ->title('Finished At')
         ];
     }
 }
