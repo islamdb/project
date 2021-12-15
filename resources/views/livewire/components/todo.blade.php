@@ -15,7 +15,7 @@
         <input type="text" class="form-control" wire:model.debounce.500ms="todo.name" style="font-size: 12px">
     </td>
     <td>
-        <input type="text" class="form-control" wire:model.debounce.500ms="todo.weight">
+        <input type="number" step="0.0000000001" class="form-control" wire:model.debounce.500ms="todo.weight">
     </td>
     <td>
         <select class="form-control" wire:model.lazy="todo.member_id">

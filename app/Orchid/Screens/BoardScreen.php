@@ -91,7 +91,7 @@ class BoardScreen extends Screen
                         ->required(),
                     Input::make('data.weight')
                         ->type('number')
-                        ->step(0.01)
+                        ->step('0.0000000001')
                         ->title('Weight')
                         ->required(),
                     Select::make('data.member_id')
