@@ -125,7 +125,9 @@ return [
 
     'resource' => [
         'stylesheets' => [],
-        'scripts'     => [],
+        'scripts'     => [
+            'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js'
+        ],
     ],
 
     /*

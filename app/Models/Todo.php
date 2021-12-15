@@ -19,7 +19,7 @@ class Todo extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -38,10 +38,10 @@ class Todo extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function members()
+    public function member()
     {
-        return $this->belongsToMany('App\Models\Member');
+        return $this->belongsTo('App\Models\Member');
     }
 }

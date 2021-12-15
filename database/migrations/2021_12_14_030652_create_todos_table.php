@@ -19,13 +19,20 @@ class CreateTodosTable extends Migration
                 ->references('id')
                 ->on('tasks')
                 ->cascadeOnDelete()
-                ->cascadeOnDelete()
-                ->nullable();
+                ->cascadeOnUpdate();
+            $table->foreignId('member_id')
+                ->nullable()
+                ->references('id')
+                ->on('members')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
             $table->unsignedBigInteger('position')
                 ->index();
             $table->text('name');
             $table->double('weight');
             $table->timestamps();
+
+            $table->unique(['task_id', 'position']);
         });
     }
 

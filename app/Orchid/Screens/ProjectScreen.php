@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use IslamDB\OrchidHelper\Column;
 use IslamDB\OrchidHelper\Screens\ResourceScreen;
 use IslamDB\OrchidHelper\View;
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
@@ -39,11 +41,6 @@ class ProjectScreen extends ResourceScreen
                 'todo' => Todo::query()
                     ->selectRaw('count(*)')
                     ->join('tasks as t', 't.id', 'task_id')
-                    ->whereColumn('projects.id', 'project_id'),
-                'member' => DB::table('member_todo as mt')
-                    ->selectRaw('count(*)')
-                    ->join('todos as td', 'td.id', 'mt.todo_id')
-                    ->join('tasks as t', 't.id', 'task_id')
                     ->whereColumn('projects.id', 'project_id')
             ])
             ->where('user_id', auth()->id());
@@ -66,7 +63,6 @@ class ProjectScreen extends ResourceScreen
             Column::make('name'),
             TD::make('task'),
             TD::make('todo', 'To Do'),
-            TD::make('member', 'Member'),
             Column::dateTime('started_at', null, 'id', false),
             Column::dateTime('finished_at', null, 'id', false)
         ];
@@ -82,9 +78,10 @@ class ProjectScreen extends ResourceScreen
             View::make('max_weight'),
             View::make('task'),
             View::make('todo'),
-            View::make('member'),
+            View::dateTime('started_at'),
+            View::dateTime('finished_at'),
             View::dateTime('created_at'),
-            View::make('updated_at')
+            View::dateTime('updated_at')
         ];
     }
 
@@ -111,5 +108,17 @@ class ProjectScreen extends ResourceScreen
             DateTimer::make('data.finished_at')
                 ->title('Finished At')
         ];
+    }
+
+    public function actions($model)
+    {
+        $actions = parent::actions($model);
+        $actions = array_merge([
+            Link::make('Board')
+                ->icon('note')
+                ->route('platform.project.board', ['project' => $model->id])
+        ], $actions);
+
+        return $actions;
     }
 }

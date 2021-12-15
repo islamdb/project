@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use IslamDB\OrchidHelper\Resource\Traits\ResourceDefaultAllowedSortsAndFilters;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;

@@ -19,12 +19,14 @@ class CreateTasksTable extends Migration
                 ->references('id')
                 ->on('projects')
                 ->cascadeOnDelete()
-                ->cascadeOnDelete()
+                ->cascadeOnUpdate()
                 ->nullable();
             $table->unsignedBigInteger('position')
                 ->index();
             $table->text('name');
             $table->timestamps();
+
+            $table->unique(['project_id', 'position']);
         });
     }
 

@@ -19,7 +19,7 @@ class CreateProjectsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->cascadeOnDelete()
-                ->cascadeOnDelete()
+                ->cascadeOnUpdate()
                 ->nullable();
             $table->string('name')
                 ->unique();
