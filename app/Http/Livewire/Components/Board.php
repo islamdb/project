@@ -16,7 +16,7 @@ class Board extends Component
             ->with([
                 'tasks' => function ($q) {
                     return $q->select(['id', 'project_id', 'name'])
-                        ->orderByDesc('position');
+                        ->orderBy('position');
                 }
             ])
             ->first()
