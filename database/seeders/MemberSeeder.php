@@ -15,9 +15,9 @@ class MemberSeeder extends Seeder
     public function run()
     {
         $members = [
-            'R',
-            'K',
-            'U'
+            'Rafy',
+            'Kresna',
+            'Ulin'
         ];
 
         foreach ($members as $member) {
