@@ -16,12 +16,21 @@
             @endforeach
             </tbody>
         </table>
-        {!! \Orchid\Screen\Actions\ModalToggle::make('Add To Do')
-                ->icon('plus')
-                ->modal('addToDo')
-                ->method('addTodo')
-                ->asyncParameters([
-                    'taskId' => $task['id'],
-                ])->modalTitle(__('Add') . 'To Do to ' . $task['name']) !!}
+        {!! \Orchid\Screen\Fields\Group::make([
+                \Orchid\Screen\Actions\ModalToggle::make('Add To Do')
+                    ->icon('plus')
+                    ->modal('addToDo')
+                    ->method('addTodo')
+                    ->asyncParameters([
+                        'taskId' => $task['id'],
+                    ])->modalTitle(__('Add') . 'To Do to ' . $task['name']),
+                \Orchid\Screen\Actions\Button::make('Delete')
+                    ->icon('trash')
+                    ->action(route('platform.project.board', [
+                        'project' => $task['project_id'],
+                        'method' => 'deleteTask',
+                        'id' => $task['id']
+                    ]))->confirm(__('Delete').' '.$task['name'])
+            ])->autoWidth() !!}
     </div>
 </div>

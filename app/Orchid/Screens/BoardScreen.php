@@ -130,6 +130,13 @@ class BoardScreen extends Screen
         Toast::success('Deleted');
     }
 
+    public function deleteTask()
+    {
+        DB::table('tasks')->where('id', request()->id)->delete();
+
+        Toast::success('Deleted');
+    }
+
     public function addTask()
     {
         $data = request()->data;
