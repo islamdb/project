@@ -13,6 +13,7 @@
     </td>
     <td>
         <input type="text" class="form-control" wire:model.debounce.500ms="todo.name" style="font-size: 12px">
+        <span style="font-size: 10px">{{ $todo['name'] }}</span>
     </td>
     <td>
         <input type="number" step="0.0000000001" class="form-control" wire:model.debounce.500ms="todo.weight">
