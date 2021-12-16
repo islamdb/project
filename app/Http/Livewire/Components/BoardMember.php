@@ -9,6 +9,10 @@ class BoardMember extends Component
 {
     public $projectId;
 
+    public $weight;
+
+    public $price;
+
     protected $listeners = [
         'todo' => 'updatedTodo'
     ];
@@ -18,9 +22,11 @@ class BoardMember extends Component
 
     }
 
-    public function mount($projectId)
+    public function mount($projectId, $weight, $price)
     {
         $this->projectId = $projectId;
+        $this->weight = $weight;
+        $this->price = $price;
     }
 
     public function render()

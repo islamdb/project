@@ -14,6 +14,12 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
+        DB::beginTransaction();
+
+        $members = DB::table('members')
+            ->select('id')
+            ->get();
+
         $projectId = DB::table('projects')
             ->insertGetId([
                 'user_id' => 1,
@@ -147,6 +153,7 @@ class ProjectSeeder extends Seeder
             foreach ($todos as $todo => $weight) {
                 $todoList[] = [
                     'task_id' => $taskId,
+                    'member_id' => $members->random()->id,
                     'position' => $todoCounter++,
                     'name' => ucfirst($todo),
                     'weight' => $weight,
@@ -156,6 +163,8 @@ class ProjectSeeder extends Seeder
             }
             DB::table('todos')
                 ->insert($todoList);
+
+            DB::commit();
         }
     }
 }

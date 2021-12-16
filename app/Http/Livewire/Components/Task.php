@@ -10,9 +10,15 @@ class Task extends Component
 {
     public $task;
 
-    public function mount($task)
+    public $weight;
+
+    public $price;
+
+    public function mount($task, $weight, $price)
     {
         $this->task = $task;
+        $this->weight = $weight;
+        $this->price = $price;
     }
 
     public function render()
