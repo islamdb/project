@@ -1,6 +1,6 @@
 <div class="card" style="margin-bottom: 2px">
     <div class="card-body">
-        <h5 class="card-title">{{ $task['name'] }}</h5>
+        <h5 class="card-title">{{ $task['name'] }} <small>({{ $todos->sum('weight') }})</small></h5>
         <table class="table">
             <thead>
             <th class="text-center" style="width: 2%">

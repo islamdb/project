@@ -19,7 +19,7 @@ class Task extends Component
     {
         return view('livewire.components.task', [
             'todos' => DB::table('todos')
-                ->select(['id'])
+                ->select(['id', 'weight'])
                 ->where('task_id', $this->task['id'])
                 ->get(),
             'members' => $members = Member::query()
