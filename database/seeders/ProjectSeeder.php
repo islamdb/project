@@ -29,92 +29,106 @@ class ProjectSeeder extends Seeder
 
         // CC
         $tasks = [
-            'CC - Config laravel & Orchid' => [
-                'install & config orchid' => 5,
-                'config fortify orchid' => 5,
-                'custom login dengan tambahan username/email' => 5,
-                'install islamdb/orchid-helper & islamdb/orchid-setting' => 1
+            'CC - Config laravel & Orchid (Dev)' => [
+                'Pasang & konfigurasi orchid' => 5,
+                'Pasang & konfigurasi fortify dengan orchid' => 5,
+                'Modifikasi login dengan menambahkan username/email' => 5,
+                'Pasang islamdb/orchid-helper & islamdb/orchid-setting' => 0
             ],
             'CC - Database' => [
-                'desain database' => 75,
-                'buat semua migrasi & model' => 25,
-                'buat trigger untuk isi kolom kode member secara otomatis (untuk export ke alat-alat)' => 20
+                'Desain database' => 60,
+                'Buat semua migrasi & model' => 25
+            ],
+            'CC - Trigger, View & Store Procedure Database (Dev)' => [
+                'Trigger & logic untuk isi kolom kode member secara otomatis' => 15,
+                'View m_organization_vew' => 10,
+                'View t_licence_view' => 10,
+                'View m_meber_view' => 10,
+                'View m_type_view' => 10,
+                'View m_question_view' => 10,
+                'View/Store procedure untuk report per member' => 20,
+                'View/Store procedure untuk report group' => 20
             ],
             'CC - Seeding' => [
-                'organization & member (ambil data dari excel)' => 20,
-                'category (ambil data dari prismic)' => 10,
-                'regio (ambil data dari prismic)' => 10,
-                'tools (ambil data dari prismic)' => 20,
-                'question & answer (ambil dan mapping data dari excel)' => 30,
-                'test (ambil data dari notion)' => 15
+                'Organization dan Member (ambil data dari excel)' => 15,
+                'Category (ambil data dari prismic)' => 10,
+                'Regio (ambil data dari prismic)' => 10,
+                'Tool (ambil data dari prismic)' => 15,
+                'Question & answer (ambil dan mapping data dari excel)' => 20,
+                'test (ambil data dari notion)' => 10
             ],
-            'CC - User' => [
-                'tambahkan kolom username pada halaman user orchid' => 1,
+            'CC - User (Dev)' => [
+                'Tambahkan kolom username pada halaman user orchid' => 1,
                 'ketika edit/add tambahkan username' => 5
             ]
         ];
 
         foreach (['CC - Organization #1', 'CC - Member', 'CC - Category', 'CC - Regio', 'CC - Tool', 'CC - Question', 'CC - Test', 'CC - Package (paket tes)'] as $t) {
             $tasks[$t] = [];
-            foreach (['browse' => 5, 'read' => 5, 'edit' => 7.5, 'add' => 7.5, 'delete' => 1] as $item => $w) {
+            foreach (['Browse' => 5, 'Read' => 5, 'Edit' => 7.5, 'Add' => 7.5, 'Delete' => 1] as $item => $w) {
                 $tasks[$t][$item] = $w;
             }
         }
-        $tasks['CC - Organization #1']['tambahkan action untuk create database baru dengan template dari CC yang organization & member telah terisi'] = 50;
-        $tasks['CC - Organization #1']['karena database diambil dari template CC maka hapus data yang tidak diperlukan'] = 10;
+        $tasks['CC - Organization #1']['Tambahkan aksi untuk membuat database baru dengan template dari CC yang organization & membernya telah terisi'] = 40;
+        $tasks['CC - Organization #1']['Karena database diambil dari template CC maka hapus data yang tidak diperlukan'] = 10;
         $tasks['CC - Organization #2'] = [
-            'tambahkan action untuk memanage lisensi' => 20,
-            'tambahkan action untuk export member (vald)' => 10,
-            'tambahkan action untuk menambahkan paket test' => 5
+            'Tambahkan aksi untuk mengelola lisensi' => 20,
+            'Tambahkan aksi untuk expor member (vald)' => 10,
+            'Tambahkan aksi untuk menambahkan paket tes' => 5
         ];
-        $tasks['CC - Member']['ketika membuat member, buat user secara otomatis (perhatikan relasi one to one)'] = 5;
-        $tasks['CC - Member']['mapping id dari vald (FDApi)'] = 75;
-        $tasks['CC - Member']['mapping id dari vald (DBApi)'] = 75;
-        $tasks['CC - Question']['impor pertanyaan dan jawaban (mapping)'] = 15;
-        $tasks['CC - Question']['ketika edit/add bisa edit/add jawaban'] = 5;
-        $tasks['CC - Test']['ketika add/edit bisa memilih beberapa tool'] = 5;
-        $tasks['CC - Test']['ketika add/edit bisa memilih beberapa regio'] = 5;
+        $tasks['CC - Member']['Ketika membuat member, buat user secara otomatis (perhatikan relasi one to one)'] = 5;
+        $tasks['CC - Member']['Mapping id dari vald (FDApi)'] = 50;
+        $tasks['CC - Member']['Mapping id dari vald (DBApi)'] = 50;
+        $tasks['CC - Question']['Impor pertanyaan dan jawaban (mapping)'] = 15;
+        $tasks['CC - Question']['Ketika edit/add bisa edit/add jawaban'] = 5;
+        $tasks['CC - Test']['Ketika add/edit bisa memilih beberapa tool'] = 5;
+        $tasks['CC - Test']['Ketika add/edit bisa memilih beberapa regio'] = 5;
 
         // SM
-        $tasks['SM - Autentikasi'] = [
-            'login satu portal (untuk semua organization)' => 25,
-            'config supaya ambil dari database yang sesuai dengan user yang login' => 25
+        $task['SM - Preparation (Dev)'] = [
+            'Pasang template' => 5,
+            'Buat routing livewire dinamis seperti nuxt.js' => 7.5,
+            'Konfigurasi SPA livewire dengan hotwire/turbolinks'
         ];
-        $tasks['SM - Hak Akses (Role & Permission)'] = [
+        $tasks['SM - Autentikasi'] = [
+            'Login satu portal (untuk semua organization)' => 25,
+            'Konfigurasi supaya mengambil dari database yang sesuai dengan user yang login' => 25
+        ];
+        $tasks['SM - Hak Akses & Perizinan'] = [
             'System Administrator (mempunyai semua hak akses)' => 7,
             'Sport Science (mendaftarkan member untuk mengikuti tes)' => 5,
             'Manager grup/squad/sub squad (memanage grup/squad/sub squad yang sesuai)' => 5,
             'Member (memiliki akses untuk melihat report dirinya sendiri)' => 5
         ];
         $tasks['SM - User'] = [
-            'browse user (hanya untuk hak akses sytem administrator dan sport science)' => 10,
-            'read user (hanya untuk hak akses sytem administrator dan sport science)' => 10,
-            'edit user (hanya untuk hak akses sytem administrator dan sport science)' => 15,
-            'add user (hanya untuk hak akses sytem administrator dan sport science)' => 15,
-            'delete user (hanya untuk hak akses sytem administrator dan sport science)' => 1
+            'Browse user (hanya untuk hak akses sytem administrator dan sport science)' => 5 + 5,
+            'Read user (hanya untuk hak akses sytem administrator dan sport science)' => 5 + 5,
+            'Edit user (hanya untuk hak akses sytem administrator dan sport science)' => 7.5 + 5,
+            'Add user (hanya untuk hak akses sytem administrator dan sport science)' => 7.5 + 5,
+            'Delete user (hanya untuk hak akses sytem administrator dan sport science)' => 1
         ];
         $tasks['SM - Organization'] = [
-            'edit profil' => 15
+            'Edit profil' => 12.5
         ];
         $tasks['SM - Grup/Squad/Sub Squad'] = [
-            'browse' => 20,
-            'add member' => 10,
-            'add sub squad (bisa nested)' => 25,
-            'edit list member' => 10,
-            'delete' => 1,
-            'Report grup/squad/sub squad (min, max, average, last)' => 25
+            'Browse' => 5 + 5 + 2.5,
+            'Add member' => 7.5 + 5,
+            'Add sub squad (bisa nested)' => 7.5 + 2.5,
+            'Edit list member' => 7.5 + 2.5,
+            'Delete' => 1,
+            'Report grup/squad/sub squad (min, max, average, last)' => 15
         ];
         $tasks['SM - Member'] = [
             'report per individu' => 25,
-            'browse tes yang diikuti' => 10,
-            'tes soal/psikologi' => 35,
+            'browse tes yang diikuti' => 5 + 5,
+            'tes soal/psikologi' => 15,
         ];
         $tasks['SM - Test'] = [
-            'Mendaftarkan member' => 10,
-            'read daftar member yang mengikuti tes' => 10,
-            'isi data untuk manual tes' => 25,
-            'upload hasil csv & olah data jika tes telah selesai' => 40,
-            'ambil data api & olah data jika tes telah selesai' => 40
+            'Mendaftarkan member' => 5 + 5,
+            'Read daftar member yang mengikuti tes' => 5 + 5,
+            'Isi data untuk manual tes' => 25,
+            'Upload hasil csv & olah data jika tes telah selesai' => 35,
+            'Ambil data api & olah data jika tes telah selesai' => 35
         ];
 
         $taskCounter = 1;
