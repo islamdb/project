@@ -106,7 +106,11 @@ class ProjectScreen extends ResourceScreen
             DateTimer::make('data.started_at')
                 ->title('Started At'),
             DateTimer::make('data.finished_at')
-                ->title('Finished At')
+                ->title('Finished At'),
+            Input::make('data.user_id')
+                ->value(auth()->id())
+                ->type('hidden')
+                ->required()
         ];
     }
 
