@@ -19,18 +19,18 @@
             @php $usedPrice += $p; @endphp
         @endforeach
         <tr>
-            <td colspan="3">
-                <b>Total</b>
+            <td colspan="2">
+                <b><small>Total</small></b>
             </td>
-            <td>
+            <td colspan="2">
                 <b>{{ number_format($usedPrice, 0, ',', '.') }}</b>
             </td>
         </tr>
         <tr>
-            <td colspan="3">
-                <b>Remining Payment</b>
+            <td colspan="2">
+                <b><small>Remining Payment</small></b>
             </td>
-            <td>
+            <td colspan="2">
                 <b>{{ rtrim(rtrim(number_format($price - $usedPrice, 20, ',', '.'), '0'), ',') }}</b>
             </td>
         </tr>
