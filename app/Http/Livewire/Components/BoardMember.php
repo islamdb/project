@@ -40,7 +40,8 @@ class BoardMember extends Component
             ->get();
 
         return view('livewire.components.board-member', [
-            'members' => $members
+            'members' => $members,
+            'usedPrice' => 0
         ]);
     }
 }
