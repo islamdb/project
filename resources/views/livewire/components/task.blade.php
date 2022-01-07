@@ -1,21 +1,32 @@
 <div class="card" style="margin-bottom: 2px">
     <div class="card-body">
-        <h5 class="card-title">{{ $task['name'] }} <small>({{ $todos->sum('weight') }})</small></h5>
-        <table class="table">
-            <thead>
-            <th class="text-center" style="width: 2%">
-                #
-            </th>
-            <th style="width: 51%">To Do</th>
-            <th style="width: 20%">Weight</th>
-            <th style="width: 27%">Member</th>
-            </thead>
-            <tbody>
-            @foreach($todos as $todo)
-                <livewire:components.todo :id="'todo-'.$todo->id" :todo="$todo->id" :projectId="$task['project_id']"/>
-            @endforeach
-            </tbody>
-        </table>
+        <div class="input-group mb-3">
+            @if(!$edit)
+                <h5 class="card-title">{{ $task['name'] }} &nbsp;</h5>
+                <button class="btn btn-warning btn-sm rounded text-white" type="button" id="button-addon2" wire:click="edit">Edit</button>
+            @else
+                <input type="text" class="form-control" wire:model.defer="task.name">
+                <button class="btn btn-success btn-sm" type="button" wire:click="save">Save</button>
+            @endif
+        </div>
+        <small>Weight is {{ $todos->sum('weight') }}</small>
+    </div>
+    <table class="table">
+        <thead>
+        <th class="text-center" style="width: 2%">
+            #
+        </th>
+        <th style="width: 51%">To Do</th>
+        <th style="width: 20%">Weight</th>
+        <th style="width: 27%">Member</th>
+        </thead>
+        <tbody>
+        @foreach($todos as $todo)
+            <livewire:components.todo :id="'todo-'.$todo->id" :todo="$todo->id" :projectId="$task['project_id']"/>
+        @endforeach
+        </tbody>
+    </table>
+    <div class="card-footer">
         {!! \Orchid\Screen\Fields\Group::make([
                 \Orchid\Screen\Actions\ModalToggle::make('Add To Do')
                     ->icon('plus')

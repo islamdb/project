@@ -37,8 +37,16 @@ class BoardScreen extends Screen
         $this->projectId = $project;
 
         $project = Project::query()
-            ->select(['id', 'name'])
+            ->select([
+                'id', 'name', 'price',
+                'weight' => Todo::query()
+                    ->selectRaw('sum(weight)')
+                    ->join('tasks as t', 't.id', 'task_id')
+                    ->whereColumn('projects.id', 'project_id')
+            ])
             ->find($project);
+
+        $this->description = 'Weight is '.$project->weight.' and value is '.number_format($project->price, '2', ',', '.');
 
         $this->name .= $project->name;
 

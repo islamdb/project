@@ -10,9 +10,33 @@ class Task extends Component
 {
     public $task;
 
-    public function mount($task)
+    public $weight;
+
+    public $price;
+
+    public $edit = false;
+
+    public function edit()
+    {
+        $this->edit = true;
+    }
+
+    public function save()
+    {
+        DB::table('tasks')
+            ->where('id', $this->task['id'])
+            ->update([
+                'name' => $this->task['name']
+            ]);
+
+        $this->edit = false;
+    }
+
+    public function mount($task, $weight, $price)
     {
         $this->task = $task;
+        $this->weight = $weight;
+        $this->price = $price;
     }
 
     public function render()

@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use IslamDB\OrchidHelper\Resource\Traits\ResourceDefaultAllowedSortsAndFilters;
+use Orchid\Attachment\Attachable;
+use Orchid\Filters\Filterable;
+use Orchid\Screen\AsSource;
 
 /**
  * @property integer $id
@@ -16,6 +20,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Member extends Model
 {
+    use Filterable,
+        AsSource,
+        Attachable,
+        ResourceDefaultAllowedSortsAndFilters;
+
     /**
      * The "type" of the auto-incrementing ID.
      *
