@@ -18,7 +18,7 @@
     <td>
         <input type="number" step="0.0000000001" class="form-control" wire:model.debounce.500ms="todo.weight">
     </td>
-    <td>
+    <td wire:ignore>
         <select class="form-control" wire:model.lazy="todo.member_id">
             <option value="">Choose</option>
             @foreach($members as $member)
