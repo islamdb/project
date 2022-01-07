@@ -22,16 +22,16 @@
             <td colspan="2">
                 <b><small>Total</small></b>
             </td>
-            <td colspan="2">
-                <b>{{ number_format($usedPrice, 0, ',', '.') }}</b>
+            <td colspan="2" style="text-align: right">
+                <b><small>{{ number_format($usedPrice, 0, ',', '.') }}</small></b>
             </td>
         </tr>
         <tr>
             <td colspan="2">
                 <b><small>Remining Payment</small></b>
             </td>
-            <td colspan="2">
-                <b>{{ rtrim(rtrim(number_format($price - $usedPrice, 20, ',', '.'), '0'), ',') }}</b>
+            <td colspan="2" style="text-align: right">
+                <b><small>{{ rtrim(rtrim(number_format($price - $usedPrice, 20, ',', '.'), '0'), ',') }}</small></b>
             </td>
         </tr>
         </tbody>
