@@ -19,7 +19,7 @@
             @php $usedPrice += $p; @endphp
         @endforeach
         <tr>
-            <td rowspan="3">
+            <td colspan="3">
                 Remining Payment
             </td>
             <td>
