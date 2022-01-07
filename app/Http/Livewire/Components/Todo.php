@@ -16,6 +16,9 @@ class Todo extends Component
     {
         $data = $this->todo;
         $data['updated_at'] = now();
+        if (empty($data['member_id'])) {
+            $data['member_id'] = null;
+        }
         unset($data['id']);
 
         DB::table('todos')
