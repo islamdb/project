@@ -20,7 +20,7 @@
     </td>
     <td>
         <select class="form-control" wire:model.lazy="todo.member_id">
-            <option>Choose</option>
+            <option value="">Choose</option>
             @foreach($members as $member)
                 <option value="{{ $member->id }}" @if($member->id == $todo['member_id']) selected @endif>
                     {{ $member->name }}
