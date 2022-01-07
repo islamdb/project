@@ -20,10 +20,18 @@
         @endforeach
         <tr>
             <td colspan="3">
-                Remining Payment
+                <b>Total</b>
             </td>
             <td>
-                {{ rtrim(rtrim(number_format($price - $usedPrice, 20, ',', '.'), '0'), ',') }}
+                <b>{{ number_format($usedPrice, 0, ',', '.') }}</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <b>Remining Payment</b>
+            </td>
+            <td>
+                <b>{{ rtrim(rtrim(number_format($price - $usedPrice, 20, ',', '.'), '0'), ',') }}</b>
             </td>
         </tr>
         </tbody>
