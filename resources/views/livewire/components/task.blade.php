@@ -22,7 +22,7 @@
         </thead>
         <tbody>
         @foreach($todos as $todo)
-            <livewire:components.todo :id="'todo-'.$todo->id" :todo="$todo->id" :projectId="$task['project_id']"/>
+            <livewire:components.todo :wire:key="'todo-'.$todo->id" :todo="$todo->id" :projectId="$task['project_id']"/>
         @endforeach
         </tbody>
     </table>
