@@ -19,7 +19,7 @@ class Todo extends Component
         $data['member_id'] = empty($data['member_id'])
             ? null
             : $data['member_id'];
-        if (empty($data['weight'])) {
+        if (!is_numeric($data['weight'])) {
             unset($data['weight']);
         }
         unset($data['id']);
