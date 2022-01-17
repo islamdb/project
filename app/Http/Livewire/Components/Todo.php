@@ -16,8 +16,11 @@ class Todo extends Component
     {
         $data = $this->todo;
         $data['updated_at'] = now();
-        if (empty($data['member_id'])) {
-            $data['member_id'] = null;
+        $data['member_id'] = empty($data['member_id'])
+            ? null
+            : $data['member_id'];
+        if (!is_numeric($data['weight'])) {
+            unset($data['weight']);
         }
         unset($data['id']);
 

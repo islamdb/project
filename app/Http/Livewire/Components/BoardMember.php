@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Components;
 
+use App\Models\Project;
+use App\Models\Todo;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -19,7 +21,18 @@ class BoardMember extends Component
 
     public function updatedTodo()
     {
+        $project = Project::query()
+            ->select([
+                'id', 'name', 'price',
+                'weight' => Todo::query()
+                    ->selectRaw('sum(weight)')
+                    ->join('tasks as t', 't.id', 'task_id')
+                    ->whereColumn('projects.id', 'project_id')
+            ])
+            ->find($this->projectId);
 
+        $this->weight = $project->weight;
+        $this->price = $project->price;
     }
 
     public function mount($projectId, $weight, $price)

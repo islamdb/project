@@ -5,7 +5,7 @@
     <div class="col-md-8">
         <div class="overflow-auto" style="max-height: 75vh">
             @foreach($project['tasks'] as $task)
-                <livewire:components.task :id="'task'.$task['id']" :task="$task" :weight="$project['weight']" :price="$project['price']"/>
+                <livewire:components.task :wire:key="'task-'.$task['id']" :task="$task" :weight="$project['weight']" :price="$project['price']"/>
             @endforeach
         </div>
     </div>

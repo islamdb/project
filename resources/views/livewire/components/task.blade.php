@@ -3,7 +3,7 @@
         <div class="input-group mb-3">
             @if(!$edit)
                 <h5 class="card-title">{{ $task['name'] }} &nbsp;</h5>
-                <button class="btn btn-warning btn-sm rounded text-white" type="button" id="button-addon2" wire:click="edit">Edit</button>
+                <button class="btn btn-warning btn-sm rounded text-white" type="button" wire:click="edit">Edit</button>
             @else
                 <input type="text" class="form-control" wire:model.defer="task.name">
                 <button class="btn btn-success btn-sm" type="button" wire:click="save">Save</button>
@@ -22,7 +22,7 @@
         </thead>
         <tbody>
         @foreach($todos as $todo)
-            <livewire:components.todo :id="'todo-'.$todo->id" :todo="$todo->id" :projectId="$task['project_id']"/>
+            <livewire:components.todo :wire:key="'todo-'.$todo->id" :todo="$todo->id" :projectId="$task['project_id']"/>
         @endforeach
         </tbody>
     </table>
