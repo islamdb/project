@@ -28,6 +28,24 @@ class Todo extends Component
         $this->emit('todo');
     }
 
+    public function finished()
+    {
+        DB::table('todos')
+            ->where('id', $this->todo['id'])
+            ->update([
+                'status' => 'FINISH'
+            ]);
+    }
+
+    public function unfinished()
+    {
+        DB::table('todos')
+            ->where('id', $this->todo['id'])
+            ->update([
+                'status' => 'START'
+            ]);
+    }
+
     public function delete()
     {
         DB::table('todos')
@@ -38,7 +56,7 @@ class Todo extends Component
     public function mount($todo, $projectId)
     {
         $this->todo = (array)DB::table('todos')
-            ->select(['id', 'member_id', 'name', 'weight'])
+            ->select(['id', 'member_id', 'name', 'weight', 'status'])
             ->find($todo);
 
         $this->projectId = $projectId;
@@ -49,6 +67,10 @@ class Todo extends Component
         $members = Member::query()
             ->where('user_id', auth()->id())
             ->get();
+
+        $this->todo = (array)DB::table('todos')
+            ->select(['id', 'member_id', 'name', 'weight', 'status'])
+            ->find($this->todo['id']);
 
         return view('livewire.components.todo', [
             'members' => $members

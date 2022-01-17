@@ -27,7 +27,7 @@ class Todo extends Model
     /**
      * @var array
      */
-    protected $fillable = ['task_id', 'position', 'name', 'weight', 'created_at', 'updated_at'];
+    protected $fillable = ['task_id', 'position', 'name', 'weight', 'created_at', 'updated_at', 'status'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
