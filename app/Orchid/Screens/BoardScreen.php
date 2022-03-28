@@ -46,7 +46,7 @@ class BoardScreen extends Screen
             ])
             ->find($project);
 
-        $perWeight = $project->price / $project->weight;
+        $perWeight = $project->price / ($project->weight == 0 ? 1 : $project->weight);
 
         $this->description = 'Weight is '.$project->weight.' and value is '.number_format($project->price, '2', ',', '.').' ('.number_format($perWeight, '2', ',', '.').' per weight)';
 
